@@ -30,13 +30,13 @@ while(run == True):
 		print("IP " + str(ip) + " SUCCESS")
 	except:
 		print("IP " + str(ip) + " FAIL") 
-	if(ip[3] > 255):
+	if(ip[3] < 255):
 		ip[3] += 1
-	elif(ip[2] > 255):
+	elif(ip[2] < 255):
 		ip[2] += 1
-	elif(ip[1] > 255):
+	elif(ip[1] < 255):
 		ip[1] += 1
-	elif(ip[0] > 191):
+	elif(ip[0] < 191):
 		ip[0] += 1
 	else:
 		print("ALL POSSIBLE IP ADDR. TRIED")
